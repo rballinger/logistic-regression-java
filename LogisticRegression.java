@@ -1,11 +1,11 @@
 import java.util.*;
 
-public class MultipleLogisticRegression {
+public class LogisticRegression {
     private final int N;    // number of total items
     private final int P;    // number of predictors
     private final double[] beta;  // regression coefficients
 
-    public MultipleLogisticRegression(double[][] x, double[] y) {
+    public LogisticRegression(double[][] x, double[] y) {
         if (x.length != y.length) throw new RuntimeException("Invalid dimensions");
         if (x == null || y == null || x.length == 0 || y.length == 0) throw new RuntimeException("Input arrays cannot be null");
 

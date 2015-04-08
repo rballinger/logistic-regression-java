@@ -1,3 +1,12 @@
+/* 
+ * Title: Main.java
+ * Author: Ryan Ballinger
+ * Date: 4-8-15
+ *
+ * This file is to show how to use the Logistic Regression class:
+ *  - with multiple predictors
+ */
+
 import java.util.Arrays;
 import java.util.Random;
 
@@ -6,6 +15,10 @@ public class Main {
   static int predictorCount = 2;
 
   public static void main(String[] args) {
+    multipleLogisticRegressionExample();
+  }
+
+  public static void multipleLogisticRegressionExample(){
     Random rand = new Random();
     double[] outcomes = new double[totalPeople];
     double[][] predictors2d = new double[totalPeople][predictorCount];
@@ -71,30 +84,31 @@ public class Main {
 
     System.out.println(outcomeCount + " out of " + totalPeople + " had true outcomes.");
 
-    MultipleLogisticRegression mlr;
+    LogisticRegression lr;
     try{
-      mlr = new MultipleLogisticRegression(predictors2d, outcomes);
+      lr = new LogisticRegression(predictors2d, outcomes);
       double[] testData = new double[predictorCount];
-      /* for larger data set
+      /* for larger random data set
       for(int i = 0; i < testData.length; i++){
         testData[i] = rand.nextInt(2);
       }
       */
 
+      // Example probability calculations
       testData[0] = 0;
       testData[1] = 0;
-      System.out.println("Probability calculated for [0,0]: " + mlr.findProbability(testData));
+      System.out.println("Probability calculated for [0,0]: " + lr.findProbability(testData));
       testData[0] = 1;
       testData[1] = 0;
-      System.out.println("Probability calculated for [1,0]: " + mlr.findProbability(testData));
+      System.out.println("Probability calculated for [1,0]: " + lr.findProbability(testData));
       testData[0] = 0;
       testData[1] = 1;
-      System.out.println("Probability calculated for [0,1]: " + mlr.findProbability(testData));
+      System.out.println("Probability calculated for [0,1]: " + lr.findProbability(testData));
       testData[0] = 1;
       testData[1] = 1;
-      System.out.println("Probability calculated for [1,1]: " + mlr.findProbability(testData));
+      System.out.println("Probability calculated for [1,1]: " + lr.findProbability(testData));
     }catch(RuntimeException e){
-        System.out.println("Multiple Logistic Regression failed.");
+        System.out.println("Logistic Regression failed.");
         e.printStackTrace();
         return;
     }
