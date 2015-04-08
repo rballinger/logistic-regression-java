@@ -1,2 +1,2 @@
 # logistic-regression-java
-Logistic Regression in Java
+Logistic Regression Java class that can be used for a single or multiple logistic regression analysis.
