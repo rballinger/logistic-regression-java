@@ -72,10 +72,16 @@ public class MultipleLogisticRegression {
             oTrue = totalTrueOutcomes / (totalTrueItems - totalTrueOutcomes);
             oFalse = totalFalseOutcomes / (totalFalseItems - totalFalseOutcomes);
             oTotal = oTrue / oFalse;
-            // find log of odds which is the coefficient
-            logit = Math.log(oTotal);
-            // store coefficient
-            beta[j + 1] = logit;
+            // check if predictor had effect on outcome
+            if(oTotal != 0){
+                // find log of odds which is the coefficient
+                logit = Math.log(oTotal);
+                // store coefficient
+                beta[j + 1] = logit;
+            }else{
+                // store 0 because predictor has no effect on outcome
+                beta[j + 1] = 0.0;
+            }
         }
 
         // output results
